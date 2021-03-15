@@ -1,9 +1,9 @@
-const min = document.getElementById('min');
-const sec = document.getElementById('sec');
-const cs = document.getElementById('cs');
-const play = document.getElementById('play');
-const pauze = document.getElementById('pauze');
-const stop = document.getElementById('stop');
+const minute = document.getElementById('min');
+const second = document.getElementById('sec');
+const centisecond = document.getElementById('cs');
+const playBtn = document.getElementById('play');
+const pauzeBtn = document.getElementById('pauze');
+const stopBtn = document.getElementById('stop');
 
 const stopWatch = {
   min: 0,
@@ -14,10 +14,10 @@ const stopWatch = {
   isStop: true,
 };
 
-min.textContent = stopWatch.min;
-sec.textContent = stopWatch.sec;
-cs.textContent = stopWatch.cs;
+minute.textContent = stopWatch.min;
+second.textContent = stopWatch.sec;
+centisecond.textContent = stopWatch.cs;
 
-play.textContent = 'Play';
-pauze.textContent = 'Pauze';
-stop.textContent = 'Stop';
+playBtn.textContent = 'Play';
+pauzeBtn.textContent = 'Pauze';
+stopBtn.textContent = 'Stop';
