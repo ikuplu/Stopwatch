@@ -1,13 +1,23 @@
 const min = document.getElementById('min');
-min.innerHTML = 'Min';
 const sec = document.getElementById('sec');
-sec.innerHTML = 'Sec';
 const cs = document.getElementById('cs');
-cs.innerHTML = 'Cs';
-
 const play = document.getElementById('play');
 const pauze = document.getElementById('pauze');
 const stop = document.getElementById('stop');
-play.innerHTML = 'Play';
-pauze.innerHTML = 'Pauze';
-stop.innerHTML = 'Stop';
+
+const stopWatch = {
+  min: 0,
+  sec: 0,
+  cs: 0,
+  isPlay: false,
+  isPauze: false,
+  isStop: true,
+};
+
+min.textContent = stopWatch.min;
+sec.textContent = stopWatch.sec;
+cs.textContent = stopWatch.cs;
+
+play.textContent = 'Play';
+pauze.textContent = 'Pauze';
+stop.textContent = 'Stop';
