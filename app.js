@@ -14,10 +14,35 @@ const stopWatch = {
   isStop: true,
 };
 
-minute.textContent = stopWatch.min;
-second.textContent = stopWatch.sec;
-centisecond.textContent = stopWatch.cs;
+// minute.textContent = stopWatch.min;
+// second.textContent = stopWatch.sec;
+// centisecond.textContent = stopWatch.cs;
 
 playBtn.textContent = 'Play';
 pauzeBtn.textContent = 'Pauze';
 stopBtn.textContent = 'Stop';
+
+function play() {
+  stopWatch.isPlay = true;
+  stopWatch.cs++;
+
+  if (stopWatch.cs === 100) {
+    stopWatch.cs = 0;
+    stopWatch.sec++;
+  }
+
+  if (stopWatch.sec === 60) {
+    stopWatch.sec = 0;
+    stopWatch.min++;
+  }
+
+  centisecond.textContent = stopWatch.cs;
+  second.textContent = stopWatch.sec;
+  minute.textContent = stopWatch.min;
+}
+
+// const player = setInterval(play, 10);
+
+// window.onload = setInterval(play, 10);
+
+// window.onload = playBtn.addEventListener('click', setInterval(play, 10));
