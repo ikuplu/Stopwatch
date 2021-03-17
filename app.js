@@ -36,9 +36,10 @@ function play() {
     stopWatch.min++;
   }
 
-  centisecond.textContent = stopWatch.cs;
-  second.textContent = stopWatch.sec;
-  minute.textContent = stopWatch.min;
+  // centisecond.textContent = stopWatch.cs;
+  // second.textContent = stopWatch.sec;
+  // minute.textContent = stopWatch.min;
+  display();
 }
 
 function pauze() {
@@ -49,8 +50,32 @@ function pauze() {
   }
 }
 
+function stop() {
+  if (stopWatch.isPlay === true || stopWatch.isPauze === true) {
+    stopWatch.isPlay = false;
+    stopWatch.isPauze = false;
+    stopWatch.isStop = true;
+    clearInterval(player);
+    reset();
+  }
+}
+
+function reset() {
+  stopWatch.min = 0;
+  stopWatch.sec = 0;
+  stopWatch.cs = 0;
+  display();
+}
+
+function display() {
+  minute.textContent = stopWatch.min;
+  second.textContent = stopWatch.sec;
+  centisecond.textContent = stopWatch.cs;
+}
+
 playBtn.addEventListener('click', () => {
   player = setInterval(play, 10);
 });
 
 pauzeBtn.addEventListener('click', pauze);
+stopBtn.addEventListener('click', stop);
