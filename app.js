@@ -41,8 +41,16 @@ function play() {
   minute.textContent = stopWatch.min;
 }
 
-// const player = setInterval(play, 10);
+function pauze() {
+  if (stopWatch.isPlay === true) {
+    stopWatch.isPlay = false;
+    stopWatch.isPauze = true;
+    clearInterval(player);
+  }
+}
 
-// window.onload = setInterval(play, 10);
+playBtn.addEventListener('click', () => {
+  player = setInterval(play, 10);
+});
 
-// window.onload = playBtn.addEventListener('click', setInterval(play, 10));
+pauzeBtn.addEventListener('click', pauze);
