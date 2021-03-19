@@ -1,3 +1,5 @@
+const minSetter = document.getElementById('set-min');
+const secSetter = document.getElementById('set-sec');
 const minute = document.getElementById('min');
 const second = document.getElementById('sec');
 const centisecond = document.getElementById('cs');
@@ -13,10 +15,6 @@ const stopWatch = {
   isPauze: false,
   isStop: true,
 };
-
-// minute.textContent = stopWatch.min;
-// second.textContent = stopWatch.sec;
-// centisecond.textContent = stopWatch.cs;
 
 playBtn.textContent = 'Play';
 pauzeBtn.textContent = 'Pauze';
@@ -36,9 +34,6 @@ function play() {
     stopWatch.min++;
   }
 
-  // centisecond.textContent = stopWatch.cs;
-  // second.textContent = stopWatch.sec;
-  // minute.textContent = stopWatch.min;
   display();
 }
 
