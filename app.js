@@ -7,6 +7,10 @@ const playBtn = document.getElementById('play');
 const pauzeBtn = document.getElementById('pauze');
 const stopBtn = document.getElementById('stop');
 
+minute.textContent = '00';
+second.textContent = '00';
+centisecond.textContent = '00';
+
 const stopWatch = {
   min: 0,
   sec: 0,
@@ -74,3 +78,18 @@ playBtn.addEventListener('click', () => {
 
 pauzeBtn.addEventListener('click', pauze);
 stopBtn.addEventListener('click', stop);
+
+minSetter.addEventListener('input', () => {
+  if (minSetter.value <= 99 && minSetter.value !== '') {
+    minute.textContent = minSetter.value;
+  } else {
+    minute.textContent = '00';
+  }
+});
+secSetter.addEventListener('input', () => {
+  if (secSetter.value <= 59 && secSetter.value !== '') {
+    second.textContent = secSetter.value;
+  } else {
+    second.textContent = '00';
+  }
+});
