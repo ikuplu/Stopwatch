@@ -26,19 +26,35 @@ stopBtn.textContent = 'Stop';
 
 function play() {
   stopWatch.isPlay = true;
-  stopWatch.cs++;
+  if (
+    (minSetter.value !== 0 && minSetter.value !== '') ||
+    (secSetter.value !== 0 && secSetter.value !== '')
+  ) {
+    stopWatch.min = minSetter.value;
+    stopWatch.sec = secSetter.value;
+    stopWatch.cs--;
+    if (stopWatch.cs === -100) {
+      stopWatch.cs = 0;
+      stopWatch.sec--;
+    }
+    if (stopWatch.sec === -60) {
+      stopWatch.sec = 0;
+      stopWatch.min--;
+    }
+    display();
+  } else {
+    stopWatch.cs++;
+    if (stopWatch.cs === 100) {
+      stopWatch.cs = 0;
+      stopWatch.sec++;
+    }
 
-  if (stopWatch.cs === 100) {
-    stopWatch.cs = 0;
-    stopWatch.sec++;
+    if (stopWatch.sec === 60) {
+      stopWatch.sec = 0;
+      stopWatch.min++;
+    }
+    display();
   }
-
-  if (stopWatch.sec === 60) {
-    stopWatch.sec = 0;
-    stopWatch.min++;
-  }
-
-  display();
 }
 
 function pauze() {
