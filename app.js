@@ -24,22 +24,37 @@ playBtn.textContent = 'Play';
 pauzeBtn.textContent = 'Pauze';
 stopBtn.textContent = 'Stop';
 
+function checkSetter() {
+  if (minSetter.value) {
+    stopWatch.min = minSetter.value;
+  }
+  if (secSetter.value) {
+    stopWatch.sec = secSetter.value;
+  }
+  minSetter.value = '';
+  secSetter.value = '';
+}
+
 function play() {
   stopWatch.isPlay = true;
+  checkSetter();
+
   if (
-    (minSetter.value !== 0 && minSetter.value !== '') ||
-    (secSetter.value !== 0 && secSetter.value !== '')
+    (stopWatch.min !== 0 && stopWatch.min !== '') ||
+    (stopWatch.sec !== 0 && stopWatch.sec !== '')
   ) {
-    stopWatch.min = minSetter.value;
-    stopWatch.sec = secSetter.value;
     stopWatch.cs--;
-    if (stopWatch.cs === -100) {
-      stopWatch.cs = 0;
+    if (stopWatch.cs === -100 && stopWatch.sec > 0) {
       stopWatch.sec--;
+      stopWatch.cs = 0;
+      console.log(stopWatch.sec);
     }
-    if (stopWatch.sec === -60) {
-      stopWatch.sec = 0;
+    if (stopWatch.cs === -100 && stopWatch.sec === 0) {
       stopWatch.min--;
+      stopWatch.sec--;
+      stopWatch.sec = 59;
+      stopWatch.cs = 0;
+      console.log(stopWatch.min);
     }
     display();
   } else {
