@@ -14,7 +14,7 @@ centisecond.textContent = '00';
 const stopWatch = {
   min: 0,
   sec: 0,
-  cs: 0,
+  cs: 100,
   isPlay: false,
   isPauze: false,
   isStop: true,
@@ -44,16 +44,16 @@ function play() {
     (stopWatch.sec !== 0 && stopWatch.sec !== '')
   ) {
     stopWatch.cs--;
-    if (stopWatch.cs === -100 && stopWatch.sec > 0) {
+    if (stopWatch.cs === 0 && stopWatch.sec > 0) {
       stopWatch.sec--;
-      stopWatch.cs = 0;
+      stopWatch.cs = 100;
       console.log(stopWatch.sec);
     }
-    if (stopWatch.cs === -100 && stopWatch.sec === 0) {
+    if (stopWatch.cs === 0 && stopWatch.sec === 0) {
       stopWatch.min--;
       stopWatch.sec--;
       stopWatch.sec = 59;
-      stopWatch.cs = 0;
+      stopWatch.cs = 100;
       console.log(stopWatch.min);
     }
     display();
@@ -98,9 +98,14 @@ function reset() {
 }
 
 function display() {
-  minute.textContent = stopWatch.min;
-  second.textContent = stopWatch.sec;
-  centisecond.textContent = stopWatch.cs;
+  minute.textContent = stopWatch.min < 10 ? '0' + stopWatch.min : stopWatch.min;
+  second.textContent = stopWatch.sec < 10 ? '0' + stopWatch.sec : stopWatch.sec;
+  if (stopWatch.cs === 100) {
+    centisecond.textContent = '0' + 0;
+  } else {
+    centisecond.textContent =
+      stopWatch.cs < 10 ? '0' + stopWatch.cs : stopWatch.cs;
+  }
 }
 
 playBtn.addEventListener('click', () => {
