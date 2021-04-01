@@ -12,60 +12,57 @@
     />
     <title>Stopwatch</title>
   </head>
-  <body>
-    <div class="container w-100 p-5 bg-dark text-white text-center">
-      <h1>Hello from frontend!</h1>
-      <div class="container w-75 p-5 mt-3 bg-primary text-white text-center">
-        <h2 class="mt-2">Hello from the stopwatch</h2>
-        <div
-          class="container w-50 d-flex flex-row justify-content-center align-items-center text-center"
-        >
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default"
-                >Min</span
-              >
-            </div>
-            <input
-              type="text"
-              class="form-control"
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              id="set-min"
-            />
+  <body class="bg-dark">
+    <div class="container w-100 p-5 text-white text-center">
+      <!-- <h1>Stopwatch</h1> -->
+      <div
+        class="container w-50 d-flex flex-row justify-content-center align-items-center text-center"
+      >
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >Min</span
+            >
           </div>
-          <div class="input-group mb-3">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="inputGroup-sizing-default"
-                >Sec</span
-              >
-            </div>
-            <input
-              type="text"
-              class="form-control"
-              aria-label="Default"
-              aria-describedby="inputGroup-sizing-default"
-              id="set-sec"
-            />
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+            id="set-min"
+          />
+        </div>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <span class="input-group-text" id="inputGroup-sizing-default"
+              >Sec</span
+            >
           </div>
+          <input
+            type="text"
+            class="form-control"
+            aria-label="Default"
+            aria-describedby="inputGroup-sizing-default"
+            id="set-sec"
+          />
         </div>
-        <div
-          class="container rounded w-50 p-3 mt-3 d-flex flex-row align-items-center bg-success text-center"
-          style="border: 2px solid black; height: 15rem"
-        >
-          <div class="container p-3 bg-warning" id="min"></div>
-          <span class="align-middle">:</span>
-          <div class="container p-3 bg-warning" id="sec"></div>
-          <span class="align-middle">:</span>
-          <div class="container p-3 bg-warning" id="cs"></div>
-        </div>
-        <div
-          class="control-panel container w-50 d-flex flex-row justify-content-around align-items-center mt-3"
-        >
-          <button type="button" class="btn btn-danger" id="play"></button>
-          <button type="button" class="btn btn-danger" id="pauze"></button>
-          <button type="button" class="btn btn-danger" id="stop"></button>
-        </div>
+      </div>
+      <div
+        class="container border border-white w-75 p-5 mt-3 d-flex flex-row align-items-center text-center"
+        style="font-size: 5rem"
+      >
+        <div class="container p-3" id="min"></div>
+        <span class="align-middle">:</span>
+        <div class="container p-3" id="sec"></div>
+        <span class="align-middle">:</span>
+        <div class="container p-3" id="cs"></div>
+      </div>
+      <div
+        class="control-panel container w-50 d-flex flex-row justify-content-around align-items-center mt-3"
+      >
+        <button type="button" class="btn btn-danger" id="play"></button>
+        <button type="button" class="btn btn-danger" id="pauze"></button>
+        <button type="button" class="btn btn-danger" id="stop"></button>
       </div>
     </div>
     <script src="./app.js"></script>
