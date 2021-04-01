@@ -19,92 +19,90 @@ const stopWatch = {
   isCountDown: false,
 };
 
+let { min, sec, cs, isPlay, isCountDown } = stopWatch;
+
 playBtn.textContent = 'Play';
 pauzeBtn.textContent = 'Pauze';
 stopBtn.textContent = 'Stop';
 
 function checkSetter() {
   if (minSetter.value !== '' && minSetter.value !== 0) {
-    stopWatch.isCountDown = true;
-    stopWatch.min = minSetter.value;
-    stopWatch.cs = 100;
+    isCountDown = true;
+    min = minSetter.value;
+    cs = 100;
   }
   if (secSetter.value !== '' && secSetter.value !== 0) {
-    stopWatch.isCountDown = true;
-    stopWatch.sec = secSetter.value;
-    stopWatch.cs = 100;
+    isCountDown = true;
+    sec = secSetter.value;
+    cs = 100;
   }
   minSetter.value = '';
   secSetter.value = '';
-  console.log(stopWatch.isCountDown);
 }
 
 function play() {
-  stopWatch.isPlay = true;
+  isPlay = true;
   checkSetter();
 
-  if (stopWatch.isCountDown) {
-    stopWatch.cs--;
-    if (stopWatch.cs === 0 && stopWatch.sec === 0 && stopWatch.min === 0) {
+  if (isCountDown) {
+    cs--;
+    if (cs === 0 && sec === 0 && min === 0) {
       stop();
     }
-    if (stopWatch.cs === 0 && stopWatch.sec > 0) {
-      stopWatch.sec--;
-      stopWatch.cs = 100;
-      console.log(stopWatch.sec);
+    if (cs === 0 && sec > 0) {
+      sec--;
+      cs = 100;
     }
-    if (stopWatch.cs === 0 && stopWatch.sec === 0 && stopWatch.min !== 0) {
-      stopWatch.min--;
-      stopWatch.sec = 59;
-      stopWatch.cs = 100;
-      console.log(stopWatch.min);
+    if (cs === 0 && sec === 0 && min !== 0) {
+      min--;
+      sec = 59;
+      cs = 100;
     }
     display();
   } else {
-    stopWatch.cs++;
-    if (stopWatch.cs === 100) {
-      stopWatch.cs = 0;
-      stopWatch.sec++;
+    cs++;
+    if (cs === 100) {
+      cs = 0;
+      sec++;
     }
 
-    if (stopWatch.sec === 60) {
-      stopWatch.sec = 0;
-      stopWatch.min++;
+    if (sec === 60) {
+      sec = 0;
+      min++;
     }
     display();
   }
 }
 
 function pauze() {
-  if (stopWatch.isPlay === true) {
+  if (isPlay) {
     clearInterval(player);
   }
 }
 
 function stop() {
-  if (stopWatch.isPlay === true) {
-    stopWatch.isPlay = false;
+  if (isPlay) {
+    isPlay = false;
     clearInterval(player);
     reset();
   }
 }
 
 function reset() {
-  stopWatch.min = 0;
-  stopWatch.sec = 0;
-  stopWatch.cs = 0;
-  stopWatch.isCountDown = false;
+  min = 0;
+  sec = 0;
+  cs = 0;
+  isCountDown = false;
   display();
 }
 
 function display() {
-  minute.textContent = stopWatch.min < 10 ? '0' + stopWatch.min : stopWatch.min;
-  second.textContent = stopWatch.sec < 10 ? '0' + stopWatch.sec : stopWatch.sec;
-  if (stopWatch.cs === 100) {
+  minute.textContent = min < 10 ? '0' + min : min;
+  second.textContent = sec < 10 ? '0' + sec : sec;
+  if (cs === 100) {
     centisecond.textContent = '0' + 0;
   } else {
-    centisecond.textContent =
-      stopWatch.cs < 10 ? '0' + stopWatch.cs : stopWatch.cs;
+    centisecond.textContent = cs < 10 ? '0' + cs : cs;
   }
 }
 
