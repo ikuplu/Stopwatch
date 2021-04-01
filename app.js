@@ -16,8 +16,6 @@ const stopWatch = {
   sec: 0,
   cs: 0,
   isPlay: false,
-  isPauze: false,
-  isStop: true,
   isCountDown: false,
 };
 
@@ -46,13 +44,9 @@ function play() {
   checkSetter();
 
   if (stopWatch.isCountDown) {
-    // (stopWatch.min !== 0 && stopWatch.min !== '') ||
-    // (stopWatch.sec !== 0 && stopWatch.sec !== '')
     stopWatch.cs--;
     if (stopWatch.cs === 0 && stopWatch.sec === 0 && stopWatch.min === 0) {
       stop();
-      // clearInterval(player);
-      // stopWatch.isCountDown = false;
     }
     if (stopWatch.cs === 0 && stopWatch.sec > 0) {
       stopWatch.sec--;
@@ -83,17 +77,13 @@ function play() {
 
 function pauze() {
   if (stopWatch.isPlay === true) {
-    stopWatch.isPlay = false;
-    stopWatch.isPauze = true;
     clearInterval(player);
   }
 }
 
 function stop() {
-  if (stopWatch.isPlay === true || stopWatch.isPauze === true) {
+  if (stopWatch.isPlay === true) {
     stopWatch.isPlay = false;
-    stopWatch.isPauze = false;
-    stopWatch.isStop = true;
     clearInterval(player);
     reset();
   }
@@ -126,14 +116,14 @@ pauzeBtn.addEventListener('click', pauze);
 stopBtn.addEventListener('click', stop);
 
 minSetter.addEventListener('input', () => {
-  if (minSetter.value <= 99 && minSetter.value !== '') {
+  if (minSetter.value !== '' && minSetter.value <= 99) {
     minute.textContent = minSetter.value;
   } else {
     minute.textContent = '00';
   }
 });
 secSetter.addEventListener('input', () => {
-  if (secSetter.value <= 59 && secSetter.value !== '') {
+  if (secSetter.value !== '' && secSetter.value <= 59) {
     second.textContent = secSetter.value;
   } else {
     second.textContent = '00';
