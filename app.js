@@ -4,7 +4,7 @@ const minute = document.getElementById('min');
 const second = document.getElementById('sec');
 const centisecond = document.getElementById('cs');
 const playBtn = document.getElementById('play');
-const pauzeBtn = document.getElementById('pauze');
+const pauseBtn = document.getElementById('pause');
 const stopBtn = document.getElementById('stop');
 
 minute.textContent = '00';
@@ -22,7 +22,7 @@ const stopWatch = {
 let { min, sec, cs, isPlay, isCountDown } = stopWatch;
 
 playBtn.textContent = 'Play';
-pauzeBtn.textContent = 'Pauze';
+pauseBtn.textContent = 'Pauze';
 stopBtn.textContent = 'Stop';
 
 function checkSetter() {
@@ -74,7 +74,7 @@ function play() {
   }
 }
 
-function pauze() {
+function pause() {
   if (isPlay) {
     clearInterval(player);
   }
@@ -110,19 +110,24 @@ playBtn.addEventListener('click', () => {
   player = setInterval(play, 10);
 });
 
-pauzeBtn.addEventListener('click', pauze);
+pauseBtn.addEventListener('click', pause);
 stopBtn.addEventListener('click', stop);
 
 minSetter.addEventListener('input', () => {
   if (minSetter.value !== '' && minSetter.value <= 99) {
-    minute.textContent = minSetter.value;
+    minute.textContent =
+      minSetter.value < 10 ? '0' + minSetter.value : minSetter.value;
+    // minute.textContent = minSetter.value;
   } else {
     minute.textContent = '00';
   }
 });
+
 secSetter.addEventListener('input', () => {
   if (secSetter.value !== '' && secSetter.value <= 59) {
-    second.textContent = secSetter.value;
+    second.textContent =
+      secSetter.value < 10 ? '0' + secSetter.value : secSetter.value;
+    // second.textContent = secSetter.value;
   } else {
     second.textContent = '00';
   }
