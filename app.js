@@ -40,37 +40,45 @@ function checkSetter() {
   secSetter.value = '';
 }
 
+function countDown() {
+  cs--;
+  if (cs === 0 && sec === 0 && min === 0) {
+    stop();
+  }
+  if (cs === 0 && sec > 0) {
+    sec--;
+    cs = 100;
+  }
+  if (cs === 0 && sec === 0 && min !== 0) {
+    min--;
+    sec = 59;
+    cs = 100;
+  }
+  display();
+}
+
+function countUp() {
+  cs++;
+  if (cs === 100) {
+    cs = 0;
+    sec++;
+  }
+
+  if (sec === 60) {
+    sec = 0;
+    min++;
+  }
+  display();
+}
+
 function play() {
   isPlay = true;
   checkSetter();
 
   if (isCountDown) {
-    cs--;
-    if (cs === 0 && sec === 0 && min === 0) {
-      stop();
-    }
-    if (cs === 0 && sec > 0) {
-      sec--;
-      cs = 100;
-    }
-    if (cs === 0 && sec === 0 && min !== 0) {
-      min--;
-      sec = 59;
-      cs = 100;
-    }
-    display();
+    countDown();
   } else {
-    cs++;
-    if (cs === 100) {
-      cs = 0;
-      sec++;
-    }
-
-    if (sec === 60) {
-      sec = 0;
-      min++;
-    }
-    display();
+    countUp();
   }
 }
 
@@ -81,7 +89,6 @@ function pause() {
 }
 
 function stop() {
-  isPlay = false;
   clearInterval(player);
   reset();
   display();
@@ -91,6 +98,7 @@ function reset() {
   min = 0;
   sec = 0;
   cs = 0;
+  isPlay = false;
   isCountDown = false;
 }
 
