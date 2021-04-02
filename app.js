@@ -25,6 +25,17 @@ playBtn.textContent = 'Play';
 pauseBtn.textContent = 'Pauze';
 stopBtn.textContent = 'Stop';
 
+function play() {
+  isPlay = true;
+  checkSetter();
+
+  if (isCountDown) {
+    countDown();
+  } else {
+    countUp();
+  }
+}
+
 function checkSetter() {
   if (minSetter.value !== '' && minSetter.value !== 0) {
     isCountDown = true;
@@ -63,23 +74,11 @@ function countUp() {
     cs = 0;
     sec++;
   }
-
   if (sec === 60) {
     sec = 0;
     min++;
   }
   display();
-}
-
-function play() {
-  isPlay = true;
-  checkSetter();
-
-  if (isCountDown) {
-    countDown();
-  } else {
-    countUp();
-  }
 }
 
 function pause() {
