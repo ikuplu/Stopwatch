@@ -81,11 +81,10 @@ function pause() {
 }
 
 function stop() {
-  if (isPlay) {
-    isPlay = false;
-    clearInterval(player);
-    reset();
-  }
+  isPlay = false;
+  clearInterval(player);
+  reset();
+  display();
 }
 
 function reset() {
@@ -93,7 +92,6 @@ function reset() {
   sec = 0;
   cs = 0;
   isCountDown = false;
-  display();
 }
 
 function display() {
@@ -114,21 +112,15 @@ pauseBtn.addEventListener('click', pause);
 stopBtn.addEventListener('click', stop);
 
 minSetter.addEventListener('input', () => {
-  if (minSetter.value !== '' && minSetter.value <= 99) {
+  if (!isPlay && minSetter.value !== '' && minSetter.value <= 99) {
     minute.textContent =
       minSetter.value < 10 ? '0' + minSetter.value : minSetter.value;
-    // minute.textContent = minSetter.value;
-  } else {
-    minute.textContent = '00';
   }
 });
 
 secSetter.addEventListener('input', () => {
-  if (secSetter.value !== '' && secSetter.value <= 59) {
+  if (!isPlay && secSetter.value !== '' && secSetter.value <= 59) {
     second.textContent =
       secSetter.value < 10 ? '0' + secSetter.value : secSetter.value;
-    // second.textContent = secSetter.value;
-  } else {
-    second.textContent = '00';
   }
 });
